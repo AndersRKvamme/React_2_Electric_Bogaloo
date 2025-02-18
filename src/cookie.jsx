@@ -9,18 +9,14 @@ export default function Cookie() {
     const [grandmaCount, setGrandmaCount] = useState(0)
     const [cursorCount, setCursorCount] = useState(0)
     
-    // useEffect(() => {
-    //         const interval = setInterval (() => { 
-    //             if (cursorCount !== 0) {
-    //                 count + cursorCount
-    //                 console.log("Purchased?");
-                    
-    //             } else { 
-    //                 console.log("No cursor purchased.");
-                    
-    //             }
-    //          }, 1000);
-    //     } )
+useEffect(() => {
+    if (cursorCount > 0) {
+        const interval = setInterval(() => {
+            setCount((prevCount) => prevCount + cursorCount);
+        }, 1000);
+        return () => clearInterval(interval)
+    }
+}, [cursorCount]);
 
 
 
@@ -46,8 +42,9 @@ export default function Cookie() {
         {/* <button onClick={()=> useEffect(()=> { const interval = setInterval(() => { 
             setCount((count) => count +1);
         }, 1000);},[])}>Cursor</button> */}
-        {/* <button onClick={()=> setCursorCount((cursorCount) => cursorCount +1)}>Cursor2</button>
-        <p>Cursor = {cursorCount}</p> */}
+        <button onClick={()=> setCursorCount((cursorCount) => cursorCount +1)
+        }>Cursor2</button>
+        <p>Cursor = {cursorCount}</p>
 
 {/* <button onClick={() => setCursorCount((prev) => prev + 1)}>Cursor</button>
 <p>Cursor = {cursorCount}</p> */}
@@ -56,3 +53,17 @@ export default function Cookie() {
 
     );
 }
+
+// function cookieSecond() {
+//     const interval = setInterval (() => { 
+        
+//         if (cursorCount !== 0) {
+//             count + cursorCount
+//             console.log("Purchased?");
+            
+//         } else { 
+//             console.log("No cursor purchased.");
+            
+//         }
+//      }, 1000);
+// } 
